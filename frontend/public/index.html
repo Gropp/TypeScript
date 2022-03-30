@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=" "/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
     <title>Curso de Back e Front com TypeScript</title>
 </head>
 <body>
-    <h2>Curso de Back & Front</h2>
-    <script src="dist/index.js"></script>
+    <div id="container">
+        <h1>Curso de Back & Front</h1>
+
+        <button id="create">Create</button>
+    </div>
+
+    <!-- <script src="dist/index.js"></script> -->
+    <script>
+        const buttonCreate = document.querySelector('#create');
+
+        buttonCreate.addEventListener('click', async function(){
+            try{
+                const response = await fetch('http://localhost:3000/user/create', {
+                    method:'post'
+                });
+            
+                console.log(await response.json());
+            } catch(error) {
+                console.log(error);
+            }
+            // console.log("create"); para testar o evento
+        })
+    </script>
 </body>
 </html>

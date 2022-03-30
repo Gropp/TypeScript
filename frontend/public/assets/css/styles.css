@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+#container {
+    margin-top: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: bold;
+    text-align: center;
+}
+
+button {
+    width: 60px;
+    color: white;
+    margin-top: 10px;
+    background: rgb(12, 122, 190);
+    border: none;
+    border-radius: 10%;
+}
