@@ -8,7 +8,7 @@
     "prod": "NODE_ENV=produtction webpack --progress --watch" 
   },
   "keywords": [],
-  "author": "",
+  "author": "Fernando Gropp",
   "license": "ISC",
   "devDependencies": {
     "ts-loader": "^9.2.8",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,25 +11,38 @@
     <div id="container">
         <h1>Curso de Back & Front</h1>
 
-        <button id="create">Create</button>
+        <!-- criamos uma div para o alpine, cria um objeto com uma funcao que sera aplicado ao botao (neste caso)-->
+        <!-- a marcacao alpine chama a funcao criada -->
+        <!-- essa div é controlada pelo ALPINE -->
+        <div x-data="create()">
+
+            <div x-show="created">Usuario cadastrado com sucesso</div>
+            <div x-show="errors.email_duplicated">Esse email já foi cadastrado</div>
+            
+            <!-- chamamos a funcao dentro da tab button sem executar
+            <button x-on:click="create">Create</button> -->
+            <!-- o form chama a funcao que esta declarada dentro da funcao create -->
+            <form x-on:submit.prevent="createUser">
+                <input type="text" name="firstname" x-model="user.firstname"/>
+                <span id="firstname"></span>
+                <input type="text" name="lastname" x-model="user.lastname"/>
+                <span id="lasstname"></span>
+                <input type="text" name="email" x-model="user.email"/>
+                <span id="email"></span>
+                <input type="text" name="password" x-model="user.password"/>
+                <span id="password"></span>
+                <button type="submit">Create</button>
+            </form>
+        </div>
+        
     </div>
 
-    <!-- <script src="dist/index.js"></script> -->
-    <script>
-        const buttonCreate = document.querySelector('#create');
-
-        buttonCreate.addEventListener('click', async function(){
-            try{
-                const response = await fetch('http://localhost:3000/user/create', {
-                    method:'post'
-                });
-            
-                console.log(await response.json());
-            } catch(error) {
-                console.log(error);
-            }
-            // console.log("create"); para testar o evento
-        })
-    </script>
+    <!-- chamando o modulo alpine no arquivo compilado do TS -->
+    <script src="/frontend/public/dist/index.js"></script>
+    <!-- vamos instalar o axios e o alpine npm i axios alpinejs -->
+    <!-- alpine é um framework JS -->
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.9.6/dist/cdn.min.js"></script> -->
+    <!-- axios faz o link com o backend -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
 </body>
 </html>

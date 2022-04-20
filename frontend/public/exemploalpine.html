@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
+    <title>Curso de Back e Front com TypeScript</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Curso de Back & Front</h1>
+
+        <!-- criamos uma div para o alpine, cria um objeto com uma funcao que sera aplicado ao botao (neste caso)-->
+        <!-- a marcacao alpine chama a funcao criada -->
+        <div x-data="create()">
+            <div x-show="show"> TESTE DE MANIPULACAO DO DOM COM ALPINE</div>
+            <!-- chamamos a funcao dentro da tab button sem executar -->
+            <button x-on:click="create">Create</button>
+        </div>
+        
+    </div>
+
+    <!-- <script src="dist/index.js"></script> -->
+    <script>
+        function  create(){
+            // a funcao retorna um objeto que é o esperado pelo x-data
+            return {
+                // variavel para mostrar um elemento
+                show:true,
+                create: function(){
+                //  ao clicar vc alterna a flag
+                    this.show = !this.show;
+                    console.log('create')
+                }
+            }
+        }
+    </script>
+    <!-- alpine é um framework JS -->
+    <script defer src="https://unpkg.com/alpinejs@3.9.6/dist/cdn.min.js"></script>
+    <!-- axios faz o link com o backend -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

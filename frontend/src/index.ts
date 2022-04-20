@@ -1,5 +1,11 @@
- import { names } from './create';
- 
- // const names = ['Fernando'];
+import "alpinejs";
+import create from "./create";
+import { userCreateInterface } from "../interfaces/userCreateInterface";
+// declarar a funcao de forma global para todos enxergarem
+declare global {
+    interface Window {
+        create: () => userCreateInterface;
+    }
+}
 
- console.log(names);
+window.create = create;

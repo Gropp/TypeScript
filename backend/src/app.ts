@@ -1,6 +1,8 @@
+
+// importacao do BD
+import '../database/src/';
 // antiga chamda do modulo express
 //const express = require('express');
-
 //apos instalar o typescript no backend e o ts-node-dev, podemos chama o express da seguinte forma:
 //agora sempre que mudar ele reinicia o servidor
 import express from "express";
@@ -20,14 +22,18 @@ import user from '../routes/user';
 
 const app = express();
 
-app.use(cors({
-    // origin:["http://localhost:5500"] - esse endereco nao funcionou
-}));
+app.use(express.json());
 
-//rota para quando o usuario acessar o raiz da pagina ele abra o controller Home.ts
+app.use(
+    cors({
+    origin:["http://localhost:5000"], // esse endereco nao funcionou
+    })
+);
+
+// rota para quando o usuario acessar o raiz da pagina ele abra o controller Home.ts
 // associa index ao metodo acima importado do controller HOME
 // com a criacao da rota a variavel index morreu
-//app.use('/', index);
+// app.use('/', index);
 app.use('/', home);
 app.use('/user', user);
 
@@ -37,6 +43,7 @@ app.use('/user', user);
 // });
 
 //cria um evento para ouvir o servidor, se subir joga uma mensagem no console
+//executar o script dev no packege.json para iniciar o listen
 app.listen(3000, function(){
     console.log('Servidor Rodando :P');
 });
